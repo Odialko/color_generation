@@ -1,0 +1,11 @@
+import 'package:color_generator/src/generator/generator_screen.dart';
+import 'package:flutter/material.dart';
+
+class GeneratorWebView extends StatelessWidget implements GeneratorScreen {
+  const GeneratorWebView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: Center(child: Text('Hello there')));
+  }
+}

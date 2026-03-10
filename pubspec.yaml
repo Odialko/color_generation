@@ -9,12 +9,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_riverpod: ^2.5.1
+  freezed_annotation: ^3.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  freezed: ^3.2.3
   flutter_lints: ^6.0.0
   solid_lints: ^0.3.3
+  build_runner: ^2.12.2
 
 flutter:
   uses-material-design: true
