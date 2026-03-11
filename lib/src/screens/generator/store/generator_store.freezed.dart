@@ -12,11 +12,17 @@ part of 'generator_store.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$GeneratorState {
+mixin _$GeneratorState implements DiagnosticableTreeMixin {
 
 
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'GeneratorState'))
+    ;
+}
 
 @override
 bool operator ==(Object other) {
@@ -28,7 +34,7 @@ bool operator ==(Object other) {
 int get hashCode => runtimeType.hashCode;
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'GeneratorState()';
 }
 
@@ -192,7 +198,7 @@ return loaded();case _:
 /// @nodoc
 
 
-class GeneratorStateInit implements GeneratorState {
+class GeneratorStateInit with DiagnosticableTreeMixin implements GeneratorState {
   const GeneratorStateInit();
   
 
@@ -200,6 +206,12 @@ class GeneratorStateInit implements GeneratorState {
 
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'GeneratorState.init'))
+    ;
+}
 
 @override
 bool operator ==(Object other) {
@@ -211,7 +223,7 @@ bool operator ==(Object other) {
 int get hashCode => runtimeType.hashCode;
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'GeneratorState.init()';
 }
 
@@ -224,7 +236,7 @@ String toString() {
 /// @nodoc
 
 
-class GeneratorStateLoading implements GeneratorState {
+class GeneratorStateLoading with DiagnosticableTreeMixin implements GeneratorState {
   const GeneratorStateLoading();
   
 
@@ -232,6 +244,12 @@ class GeneratorStateLoading implements GeneratorState {
 
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'GeneratorState.loading'))
+    ;
+}
 
 @override
 bool operator ==(Object other) {
@@ -243,7 +261,7 @@ bool operator ==(Object other) {
 int get hashCode => runtimeType.hashCode;
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'GeneratorState.loading()';
 }
 
@@ -256,7 +274,7 @@ String toString() {
 /// @nodoc
 
 
-class GeneratorStateError implements GeneratorState {
+class GeneratorStateError with DiagnosticableTreeMixin implements GeneratorState {
   const GeneratorStateError({this.message});
   
 
@@ -269,6 +287,12 @@ class GeneratorStateError implements GeneratorState {
 $GeneratorStateErrorCopyWith<GeneratorStateError> get copyWith => _$GeneratorStateErrorCopyWithImpl<GeneratorStateError>(this, _$identity);
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'GeneratorState.error'))
+    ..add(DiagnosticsProperty('message', message));
+}
 
 @override
 bool operator ==(Object other) {
@@ -280,7 +304,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,message);
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'GeneratorState.error(message: $message)';
 }
 
@@ -322,7 +346,7 @@ as String?,
 /// @nodoc
 
 
-class GeneratorStateLoaded implements GeneratorState {
+class GeneratorStateLoaded with DiagnosticableTreeMixin implements GeneratorState {
   const GeneratorStateLoaded();
   
 
@@ -330,6 +354,12 @@ class GeneratorStateLoaded implements GeneratorState {
 
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'GeneratorState.loaded'))
+    ;
+}
 
 @override
 bool operator ==(Object other) {
@@ -341,7 +371,7 @@ bool operator ==(Object other) {
 int get hashCode => runtimeType.hashCode;
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'GeneratorState.loaded()';
 }
 
@@ -352,9 +382,9 @@ String toString() {
 
 
 /// @nodoc
-mixin _$GeneratorStoreState {
+mixin _$GeneratorStoreState implements DiagnosticableTreeMixin {
 
- GeneratorState get generatorState; Color get color;
+ GeneratorState get generatorState; Color get backgroundColor; Color get contrastColor;
 /// Create a copy of GeneratorStoreState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -362,19 +392,25 @@ mixin _$GeneratorStoreState {
 $GeneratorStoreStateCopyWith<GeneratorStoreState> get copyWith => _$GeneratorStoreStateCopyWithImpl<GeneratorStoreState>(this as GeneratorStoreState, _$identity);
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'GeneratorStoreState'))
+    ..add(DiagnosticsProperty('generatorState', generatorState))..add(DiagnosticsProperty('backgroundColor', backgroundColor))..add(DiagnosticsProperty('contrastColor', contrastColor));
+}
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GeneratorStoreState&&(identical(other.generatorState, generatorState) || other.generatorState == generatorState)&&(identical(other.color, color) || other.color == color));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GeneratorStoreState&&(identical(other.generatorState, generatorState) || other.generatorState == generatorState)&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.contrastColor, contrastColor) || other.contrastColor == contrastColor));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,generatorState,color);
+int get hashCode => Object.hash(runtimeType,generatorState,backgroundColor,contrastColor);
 
 @override
-String toString() {
-  return 'GeneratorStoreState(generatorState: $generatorState, color: $color)';
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'GeneratorStoreState(generatorState: $generatorState, backgroundColor: $backgroundColor, contrastColor: $contrastColor)';
 }
 
 
@@ -385,7 +421,7 @@ abstract mixin class $GeneratorStoreStateCopyWith<$Res>  {
   factory $GeneratorStoreStateCopyWith(GeneratorStoreState value, $Res Function(GeneratorStoreState) _then) = _$GeneratorStoreStateCopyWithImpl;
 @useResult
 $Res call({
- GeneratorState generatorState, Color color
+ GeneratorState generatorState, Color backgroundColor, Color contrastColor
 });
 
 
@@ -402,10 +438,11 @@ class _$GeneratorStoreStateCopyWithImpl<$Res>
 
 /// Create a copy of GeneratorStoreState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? generatorState = null,Object? color = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? generatorState = null,Object? backgroundColor = null,Object? contrastColor = null,}) {
   return _then(_self.copyWith(
 generatorState: null == generatorState ? _self.generatorState : generatorState // ignore: cast_nullable_to_non_nullable
-as GeneratorState,color: null == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
+as GeneratorState,backgroundColor: null == backgroundColor ? _self.backgroundColor : backgroundColor // ignore: cast_nullable_to_non_nullable
+as Color,contrastColor: null == contrastColor ? _self.contrastColor : contrastColor // ignore: cast_nullable_to_non_nullable
 as Color,
   ));
 }
@@ -500,10 +537,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( GeneratorState generatorState,  Color color)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( GeneratorState generatorState,  Color backgroundColor,  Color contrastColor)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _GeneratorStoreState() when $default != null:
-return $default(_that.generatorState,_that.color);case _:
+return $default(_that.generatorState,_that.backgroundColor,_that.contrastColor);case _:
   return orElse();
 
 }
@@ -521,10 +558,10 @@ return $default(_that.generatorState,_that.color);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( GeneratorState generatorState,  Color color)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( GeneratorState generatorState,  Color backgroundColor,  Color contrastColor)  $default,) {final _that = this;
 switch (_that) {
 case _GeneratorStoreState():
-return $default(_that.generatorState,_that.color);case _:
+return $default(_that.generatorState,_that.backgroundColor,_that.contrastColor);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -541,10 +578,10 @@ return $default(_that.generatorState,_that.color);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( GeneratorState generatorState,  Color color)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( GeneratorState generatorState,  Color backgroundColor,  Color contrastColor)?  $default,) {final _that = this;
 switch (_that) {
 case _GeneratorStoreState() when $default != null:
-return $default(_that.generatorState,_that.color);case _:
+return $default(_that.generatorState,_that.backgroundColor,_that.contrastColor);case _:
   return null;
 
 }
@@ -555,12 +592,13 @@ return $default(_that.generatorState,_that.color);case _:
 /// @nodoc
 
 
-class _GeneratorStoreState implements GeneratorStoreState {
-  const _GeneratorStoreState({required this.generatorState, required this.color});
+class _GeneratorStoreState with DiagnosticableTreeMixin implements GeneratorStoreState {
+  const _GeneratorStoreState({required this.generatorState, required this.backgroundColor, required this.contrastColor});
   
 
 @override final  GeneratorState generatorState;
-@override final  Color color;
+@override final  Color backgroundColor;
+@override final  Color contrastColor;
 
 /// Create a copy of GeneratorStoreState
 /// with the given fields replaced by the non-null parameter values.
@@ -569,19 +607,25 @@ class _GeneratorStoreState implements GeneratorStoreState {
 _$GeneratorStoreStateCopyWith<_GeneratorStoreState> get copyWith => __$GeneratorStoreStateCopyWithImpl<_GeneratorStoreState>(this, _$identity);
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'GeneratorStoreState'))
+    ..add(DiagnosticsProperty('generatorState', generatorState))..add(DiagnosticsProperty('backgroundColor', backgroundColor))..add(DiagnosticsProperty('contrastColor', contrastColor));
+}
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GeneratorStoreState&&(identical(other.generatorState, generatorState) || other.generatorState == generatorState)&&(identical(other.color, color) || other.color == color));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GeneratorStoreState&&(identical(other.generatorState, generatorState) || other.generatorState == generatorState)&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.contrastColor, contrastColor) || other.contrastColor == contrastColor));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,generatorState,color);
+int get hashCode => Object.hash(runtimeType,generatorState,backgroundColor,contrastColor);
 
 @override
-String toString() {
-  return 'GeneratorStoreState(generatorState: $generatorState, color: $color)';
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'GeneratorStoreState(generatorState: $generatorState, backgroundColor: $backgroundColor, contrastColor: $contrastColor)';
 }
 
 
@@ -592,7 +636,7 @@ abstract mixin class _$GeneratorStoreStateCopyWith<$Res> implements $GeneratorSt
   factory _$GeneratorStoreStateCopyWith(_GeneratorStoreState value, $Res Function(_GeneratorStoreState) _then) = __$GeneratorStoreStateCopyWithImpl;
 @override @useResult
 $Res call({
- GeneratorState generatorState, Color color
+ GeneratorState generatorState, Color backgroundColor, Color contrastColor
 });
 
 
@@ -609,10 +653,11 @@ class __$GeneratorStoreStateCopyWithImpl<$Res>
 
 /// Create a copy of GeneratorStoreState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? generatorState = null,Object? color = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? generatorState = null,Object? backgroundColor = null,Object? contrastColor = null,}) {
   return _then(_GeneratorStoreState(
 generatorState: null == generatorState ? _self.generatorState : generatorState // ignore: cast_nullable_to_non_nullable
-as GeneratorState,color: null == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
+as GeneratorState,backgroundColor: null == backgroundColor ? _self.backgroundColor : backgroundColor // ignore: cast_nullable_to_non_nullable
+as Color,contrastColor: null == contrastColor ? _self.contrastColor : contrastColor // ignore: cast_nullable_to_non_nullable
 as Color,
   ));
 }

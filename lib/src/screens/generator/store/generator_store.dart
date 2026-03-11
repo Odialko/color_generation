@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:color_generator/src/domains/constants/color_constants.dart';
 import 'package:color_generator/src/domains/interfaces/color/i_color_repository.dart';
 import 'package:color_generator/src/providers/color_repository_provider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -20,7 +21,8 @@ abstract class GeneratorState with _$GeneratorState {
 abstract class GeneratorStoreState with _$GeneratorStoreState {
   const factory GeneratorStoreState({
     required GeneratorState generatorState,
-    required Color color,
+    required Color backgroundColor,
+    required Color contrastColor,
   }) = _GeneratorStoreState;
 }
 
@@ -31,11 +33,13 @@ class GeneratorNotifier extends StateNotifier<GeneratorStoreState> {
     : super(
         GeneratorStoreState(
           generatorState: const GeneratorState.init(),
-          color: ColorConstants.defaultColor,
+          backgroundColor: ColorConstants.defaultColor,
+          contrastColor: ColorConstants.defaultContrastColor,
         ),
       );
 
   void randomColorGenerator() {
+    debugPrint('randomColorGenerator');
     state = state.copyWith(generatorState: const GeneratorState.loading());
 
     final result = _colorRepository.getRandomColor();
@@ -44,10 +48,22 @@ class GeneratorNotifier extends StateNotifier<GeneratorStoreState> {
       (error) => state = state.copyWith(
         generatorState: GeneratorState.error(message: error.toString()),
       ),
-      (generatedColor) => state = state.copyWith(
-        generatorState: const GeneratorState.loaded(),
-        color: generatedColor,
-      ),
+      (generatedColor) {
+        state = state.copyWith(
+          generatorState: const GeneratorState.loaded(),
+          backgroundColor: generatedColor,
+        );
+        makeContrastColorToRandom();
+      },
+    );
+  }
+
+  void makeContrastColorToRandom() {
+    debugPrint('makeContrastColorToRandom');
+    state = state.copyWith(
+      contrastColor: state.backgroundColor.computeLuminance() > 0.5
+          ? ColorConstants.defaultContrastColor
+          : ColorConstants.defaultColor,
     );
   }
 }

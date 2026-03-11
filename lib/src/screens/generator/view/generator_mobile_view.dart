@@ -1,3 +1,4 @@
+import 'package:color_generator/src/domains/constants/constants.dart';
 import 'package:color_generator/src/screens/generator/generator_screen.dart';
 import 'package:color_generator/src/screens/generator/store/generator_store.dart';
 import 'package:flutter/material.dart';
@@ -9,13 +10,21 @@ class GeneratorMobileView extends ConsumerWidget implements GeneratorScreen {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colorState = ref.watch(generatorProvider);
+    final colorNotifier = ref.read(generatorProvider.notifier);
 
-    return Scaffold(
-      backgroundColor: colorState.color,
-      body: Center(
-        child: Text(
-          'Hello there',
-          style: TextStyle(fontSize: 38, fontWeight: FontWeight.w700),
+    return GestureDetector(
+      onTap: () => colorNotifier.randomColorGenerator(),
+      child: Scaffold(
+        backgroundColor: colorState.backgroundColor,
+        body: Center(
+          child: Text(
+            TextConstants.mainText,
+            style: TextStyle(
+              fontSize: 38,
+              fontWeight: FontWeight.w700,
+              color: colorState.contrastColor,
+            ),
+          ),
         ),
       ),
     );
