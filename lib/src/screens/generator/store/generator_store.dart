@@ -38,10 +38,10 @@ class GeneratorNotifier extends StateNotifier<GeneratorStoreState> {
         ),
       );
 
-  void randomColorGenerator() {
+  Future<void> randomColorGenerator() async {
     debugPrint('randomColorGenerator');
     state = state.copyWith(generatorState: const GeneratorState.loading());
-
+    await Future.delayed(const Duration(milliseconds: 300));
     final result = _colorRepository.getRandomColor();
 
     result.fold(
