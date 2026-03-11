@@ -1,4 +1,4 @@
-import 'package:color_generator/src/generator/generator_screen.dart';
+import 'package:color_generator/src/screens/generator/generator_screen.dart';
 import 'package:flutter/material.dart';
 
 class ColorGeneratorApp extends StatelessWidget {
