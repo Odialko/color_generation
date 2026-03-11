@@ -13,7 +13,6 @@ class GeneratorMobileView extends ConsumerWidget implements GeneratorScreen {
     final colorState = ref.watch(generatorProvider);
     final colorNotifier = ref.read(generatorProvider.notifier);
 
-
     return Scaffold(
       body: GestureDetector(
         behavior: HitTestBehavior.opaque,
