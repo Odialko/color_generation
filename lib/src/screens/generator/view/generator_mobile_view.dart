@@ -15,11 +15,15 @@ class GeneratorMobileView extends ConsumerWidget implements GeneratorScreen {
     return GestureDetector(
       onTap: () => colorNotifier.randomColorGenerator(),
       child: Scaffold(
-        backgroundColor: colorState.color,
+        backgroundColor: colorState.backgroundColor,
         body: Center(
           child: Text(
             TextConstants.mainText,
-            style: TextStyle(fontSize: 38, fontWeight: FontWeight.w700),
+            style: TextStyle(
+              fontSize: 38,
+              fontWeight: FontWeight.w700,
+              color: colorState.contrastColor,
+            ),
           ),
         ),
       ),

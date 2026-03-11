@@ -21,7 +21,8 @@ abstract class GeneratorState with _$GeneratorState {
 abstract class GeneratorStoreState with _$GeneratorStoreState {
   const factory GeneratorStoreState({
     required GeneratorState generatorState,
-    required Color color,
+    required Color backgroundColor,
+    required Color contrastColor,
   }) = _GeneratorStoreState;
 }
 
@@ -32,7 +33,8 @@ class GeneratorNotifier extends StateNotifier<GeneratorStoreState> {
     : super(
         GeneratorStoreState(
           generatorState: const GeneratorState.init(),
-          color: ColorConstants.defaultColor,
+          backgroundColor: ColorConstants.defaultColor,
+          contrastColor: ColorConstants.defaultContrastColor,
         ),
       );
 
@@ -46,10 +48,22 @@ class GeneratorNotifier extends StateNotifier<GeneratorStoreState> {
       (error) => state = state.copyWith(
         generatorState: GeneratorState.error(message: error.toString()),
       ),
-      (generatedColor) => state = state.copyWith(
-        generatorState: const GeneratorState.loaded(),
-        color: generatedColor,
-      ),
+      (generatedColor) {
+        state = state.copyWith(
+          generatorState: const GeneratorState.loaded(),
+          backgroundColor: generatedColor,
+        );
+        makeContrastColorToRandom();
+      },
+    );
+  }
+
+  void makeContrastColorToRandom() {
+    debugPrint('makeContrastColorToRandom');
+    state = state.copyWith(
+      contrastColor: state.backgroundColor.computeLuminance() > 0.5
+          ? ColorConstants.defaultContrastColor
+          : ColorConstants.defaultColor,
     );
   }
 }
