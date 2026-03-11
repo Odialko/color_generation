@@ -12,7 +12,6 @@ class ColorRepositoryImpl implements IColorRepository {
 
   @override
   ColorEither getRandomColor() {
-    // TODO: implement getRandomColor
     try {
       final randomColor = Color.fromARGB(
         ColorConstants.defaultOpacity,
