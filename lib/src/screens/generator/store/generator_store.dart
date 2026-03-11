@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:color_generator/src/domains/constants/color_constants.dart';
 import 'package:color_generator/src/domains/interfaces/color/i_color_repository.dart';
 import 'package:color_generator/src/providers/color_repository_provider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -36,6 +37,7 @@ class GeneratorNotifier extends StateNotifier<GeneratorStoreState> {
       );
 
   void randomColorGenerator() {
+    debugPrint('randomColorGenerator');
     state = state.copyWith(generatorState: const GeneratorState.loading());
 
     final result = _colorRepository.getRandomColor();
