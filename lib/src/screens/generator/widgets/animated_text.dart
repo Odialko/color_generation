@@ -3,7 +3,11 @@ import 'package:color_generator/src/screens/generator/store/generator_store.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// AnimatedText widget part of web view and mobile view
+/// usage:
+/// const AnimatedText();
 class AnimatedText extends ConsumerWidget {
+  /// default constructor for AnimatedText
   const AnimatedText({super.key});
 
   @override

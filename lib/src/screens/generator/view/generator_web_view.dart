@@ -1,11 +1,13 @@
 import 'package:color_generator/src/domains/constants/animation_constants.dart';
-import 'package:color_generator/src/screens/generator/generator_screen.dart';
 import 'package:color_generator/src/screens/generator/store/generator_store.dart';
 import 'package:color_generator/src/screens/generator/widgets/animated_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class GeneratorWebView extends ConsumerWidget implements GeneratorScreen {
+/// GeneratorWebView - web view for showing random color on web
+/// implements GeneratorScreen
+class GeneratorWebView extends ConsumerWidget {
+  /// default constructor for GeneratorWebView
   const GeneratorWebView({super.key});
 
   @override
@@ -16,11 +18,11 @@ class GeneratorWebView extends ConsumerWidget implements GeneratorScreen {
     return Scaffold(
       body: GestureDetector(
         behavior: HitTestBehavior.opaque,
-        onTap: () => colorNotifier.randomColorGenerator(),
+        onTap: colorNotifier.randomColorGenerator,
         child: AnimatedContainer(
           duration: AnimationConstants.defaultAnimationDuration,
           color: colorState.backgroundColor,
-          child: Center(child: AnimatedText()),
+          child: const Center(child: AnimatedText()),
         ),
       ),
     );
