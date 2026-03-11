@@ -1,11 +1,12 @@
 import 'package:color_generator/src/domains/constants/constants.dart';
-import 'package:color_generator/src/screens/generator/generator_screen.dart';
 import 'package:color_generator/src/screens/generator/store/generator_store.dart';
 import 'package:color_generator/src/screens/generator/widgets/animated_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class GeneratorMobileView extends ConsumerWidget implements GeneratorScreen {
+/// GeneratorMobileView - mobile view for showing random color on mobile
+class GeneratorMobileView extends ConsumerWidget {
+  /// default constructor for GeneratorMobileView
   const GeneratorMobileView({super.key});
 
   @override
@@ -16,11 +17,11 @@ class GeneratorMobileView extends ConsumerWidget implements GeneratorScreen {
     return Scaffold(
       body: GestureDetector(
         behavior: HitTestBehavior.opaque,
-        onTap: () => colorNotifier.randomColorGenerator(),
+        onTap: colorNotifier.randomColorGenerator,
         child: AnimatedContainer(
           duration: AnimationConstants.defaultAnimationDuration,
           color: colorState.backgroundColor,
-          child: Center(
+          child: const Center(
             child: AnimatedText(),
           ),
         ),

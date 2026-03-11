@@ -4,10 +4,14 @@ import 'dart:ui';
 import 'package:color_generator/src/domains/constants/constants.dart';
 import 'package:color_generator/src/domains/interfaces/color/i_color_repository.dart';
 import 'package:dartz/dartz.dart';
-
+/// ColorRepositoryImpl - layer for getting random color
+/// usage:
+/// final colorRepository = ColorRepositoryImpl(randomProvider);
+/// final randomColor = colorRepository.getRandomColor();
 class ColorRepositoryImpl implements IColorRepository {
   final Random _random;
 
+  /// for creating repository with DI parameter
   ColorRepositoryImpl(this._random);
 
   @override
